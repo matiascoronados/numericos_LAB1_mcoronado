@@ -1,0 +1,21 @@
+function [respuesta] = adjunta(matriz)
+aux = 1;
+[filas,columnas] = size(matriz);
+respuesta = matriz;
+if filas == columnas
+    for i=1:filas
+        for j=1:columnas
+            matrizAux = matriz;
+            matrizAux(:,j) = [];
+            matrizAux(i,:) = [];
+            if aux == -1
+                aux = 1;
+            else
+                aux = -;
+                verificador = 0;
+            end
+            respuesta(i,j)= aux*determinante(matrizAux);
+        end
+    end
+end
+end
