@@ -22,8 +22,8 @@ respuestasAux = [];
 erroresAux = [];
 e = 1;
 while e > tolerancia
-    auxA = inversa(D)*(-L-U);
-    auxB = inversa(D)*b;
+    auxA = inv(D)*(-L-U);
+    auxB = inv(D)*b;
     x_1 = auxA*x_0 + auxB;
     e = norm(x_1 - x_0, inf)/norm(x_1, inf);
     respuestasAux = [respuestasAux,x_1];

@@ -14,7 +14,7 @@ for i = 1:ancho
     L(i+1:ancho,i)=(matriz(i+1:ancho,i)-L(i+1:ancho,1:i-1)*U(1:i-1,i))/U(i,i);
 end
 
-Lt = transpuesta(L);
+Lt = L';
 y = L\b;
 respuesta = Lt\y * 0.01;
 

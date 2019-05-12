@@ -11,10 +11,10 @@ for j=2:n
     Q(:,j)=matriz(:,j);
     for i=1:j-1
         aux = matriz(:,j);
-        Q(:,j)=Q(:,j)-transpuesta(aux)*Q(:,i)*Q(:,i);
-        R(i,j)=transpuesta(aux)*Q(:,i);
+        Q(:,j)=Q(:,j)-(aux')*Q(:,i)*Q(:,i);
+        R(i,j)=(aux')*Q(:,i);
     end
     R(j,j)=norm(Q(:,j));
     Q(:,j)=Q(:,j)/norm(Q(:,j));
 end 
-respuesta =inversa(R)*transpuesta(Q)*b;
+respuesta =inv(R)*(Q')*b;

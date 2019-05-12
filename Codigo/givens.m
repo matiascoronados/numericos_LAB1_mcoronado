@@ -1,32 +1,29 @@
-function [respuesta] = givens(matriz,b)
-[ancho, alto] = size(matriz);
+function [respuesta] =givens(matriz,b)
+[ancho ,largo] = size(matriz);
 Q = zeros(ancho);
-for i = 1:ancho
+for i=1:ancho
     Q(i,i) = 1;
 end
 R = matriz;
-%Recorro solo triangular superior
-for j=1:alto
-    for i=j+1:ancho
-        if (R(i,j)~= 0)
-            a = R(i,j);
-            b = R(j,j);
-            raiz = sqrt(a^2+b^2);
-            sen = -a/raiz;
-            cos = b/raiz;
+for i=1:largo
+    for j=i+1:ancho
+        if (R(j,i) ~= 0)
+            raiz = sqrt(R(j,i)^2 + R(i,i)^2);
+            s = -R(j,i)/raiz;
+            c = R(i,i)/raiz;
+            % Matriz de rotacion
             G = zeros(ancho);
-            for k =1:ancho
+            for k=1:ancho
                 G(k,k) = 1;
             end
-            G(j,j) = cos;
-            G(i,i) = cos;
-            G(i,j) = -sen;
-            G(j,i) = sen;
-            Q = Q*G;
-            R = transpuesta(G)*R;
-        end;
-    end;
+            G(i,i) = c;
+            G(j,j) = c;
+            G(j,i) = -s;
+            G(i,j) = s;
+            Q = Q*G; % Matriz ortogonal
+            R = G'*R; % Matriz triangular inferior
+        end
+    end
 end
-respuesta = inversa(R)*transpuesta(Q)*b;
+  respuesta = inv(R)*inv(Q)*b;
 end
-

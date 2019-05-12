@@ -27,7 +27,7 @@ e = 1;
 
 while e > tolerancia
     auxA = L+D;
-    auxB = inversa(auxA);
+    auxB = inv(auxA);
     auxC = -U*x_0 + b;
     x_1 = auxB*auxC;
     e = norm(x_1 - x_0, inf)/norm(x_1, inf);

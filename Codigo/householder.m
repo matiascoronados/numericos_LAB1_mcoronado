@@ -20,6 +20,6 @@ for j = 1:min(largo,ancho)
     R(j:largo,j:ancho) = auxB;
     R(j+1:largo,j) = 0;
 end
-respuesta=inversa(R)*transpuesta(U)*b;
+respuesta=inv(R)*(U')*b;
 end
 
